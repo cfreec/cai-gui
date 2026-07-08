@@ -1,0 +1,261 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@keyframes shimmer {
+  0% { background-position: 100% center; }
+  100% { background-position: -100% center; }
+}
+
+@keyframes slideDownFast {
+  0% { transform: translateY(0); opacity: 1; }
+  40% { transform: translateY(4px); opacity: 0.6; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-slide-down-fast {
+  animation: slideDownFast 0.2s ease-out;
+}
+
+* { box-sizing: border-box; }
+
+:root {
+  /* 主色 */
+  --accent-teal: #26C6C0;
+  --accent-teal-dark: #1FA8A2;
+  --accent-orange: #D97757;
+  --accent-send: #A8DEB0;
+
+  /* 背景 */
+  --bg-app: #FCFCFD;
+  --bg-sidebar: #FCFCFD;
+  --bg-main: #FCFCFD;
+  --bg-sidebar-hover: #F5F5F5;
+  --bg-sidebar-active: #EAF4F1;
+  --bg-card: #FFFFFF;
+  --bg-segment: #F2F2F2;
+  --bg-dropdown: #FFFFFF;
+  --bg-input: #FFFFFF;
+
+  /* 文字 */
+  --text-primary: #1A1A1A;
+  --text-secondary: #3A3A3A;
+  --text-muted: #5A5A5A;
+  --text-placeholder: #9A9A9A;
+  --text-desc: #8A8A8A;
+  --text-hint: #A0A0A0;
+  --text-sidebar-active: #1A1A1A;
+
+  /* 边框 */
+  --border: #E0E0E0;
+  --border-card: #EDEDED;
+  --border-light: #EAEAEA;
+  --border-focus: #26C6C0;
+
+  /* 其他 */
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.05);
+  --shadow-modal: 0 10px 40px rgba(0,0,0,0.12);
+  --shadow-dropdown: 0 4px 16px rgba(0,0,0,0.1);
+  --radius-card: 12px;
+  --radius-modal: 16px;
+  --radius-btn: 8px;
+}
+
+.dark {
+  --bg-app: #1A1A1A;
+  --bg-sidebar: #1A1A1A;
+  --bg-main: #1A1A1A;
+  --bg-sidebar-hover: #242424;
+  --bg-sidebar-active: #1a3a32;
+  --bg-card: #222222;
+  --bg-segment: #2A2A2A;
+  --bg-dropdown: #222222;
+  --bg-input: #222222;
+  --text-primary: #F0F0F0;
+  --text-secondary: #CCCCCC;
+  --text-muted: #888888;
+  --text-placeholder: #555555;
+  --text-desc: #888888;
+  --text-hint: #666666;
+  --text-sidebar-active: #26C6C0;
+  --border: #333333;
+  --border-card: #2A2A2A;
+  --border-light: #2A2A2A;
+  --shadow-card: 0 1px 3px rgba(0,0,0,0.3);
+  --shadow-modal: 0 10px 40px rgba(0,0,0,0.5);
+  --shadow-dropdown: 0 4px 16px rgba(0,0,0,0.4);
+}
+
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  font-size: var(--font-size-base, 13px);
+  background: var(--bg-app);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+}
+
+.ai-code-block {
+  background: #111111;
+  border-color: #2f2f2f;
+  color: #e8e8e8;
+}
+
+.ai-code-block > div:first-child {
+  background: #171717;
+  border-bottom: 1px solid #2a2a2a;
+  color: #9ca3af;
+}
+
+.ai-code-block pre,
+.ai-code-block code {
+  font-family: var(--font-family-mono), 'SF Mono', Consolas, monospace;
+}
+
+.ai-code-copy {
+  color: #a3a3a3;
+  opacity: 0;
+}
+
+.ai-code-block:hover .ai-code-copy {
+  opacity: 1;
+}
+
+.ai-code-copy:hover {
+  color: #ffffff;
+  background: #2a2a2a;
+}
+
+.ai-code-block .hljs-keyword,
+.ai-code-block .hljs-selector-tag,
+.ai-code-block .hljs-subst {
+  color: #ff7b72;
+}
+
+.ai-code-block .hljs-string,
+.ai-code-block .hljs-title,
+.ai-code-block .hljs-name,
+.ai-code-block .hljs-type,
+.ai-code-block .hljs-attribute,
+.ai-code-block .hljs-symbol,
+.ai-code-block .hljs-bullet,
+.ai-code-block .hljs-addition,
+.ai-code-block .hljs-variable,
+.ai-code-block .hljs-template-tag,
+.ai-code-block .hljs-template-variable {
+  color: #a5d6ff;
+}
+
+.ai-code-block .hljs-comment,
+.ai-code-block .hljs-quote,
+.ai-code-block .hljs-deletion,
+.ai-code-block .hljs-meta {
+  color: #8b949e;
+}
+
+.ai-code-block .hljs-number,
+.ai-code-block .hljs-literal {
+  color: #79c0ff;
+}
+
+.ai-code-block .hljs-built_in,
+.ai-code-block .hljs-class .hljs-title {
+  color: #ffa657;
+}
+
+.pm-composer {
+  min-height: 72px;
+  max-height: 220px;
+  overflow-y: auto;
+  color: var(--text-primary);
+  cursor: text;
+}
+
+.pm-composer .ProseMirror {
+  min-height: 52px;
+  outline: none;
+  caret-color: #26C6C0;
+}
+
+.pm-composer .ProseMirror p,
+.pm-composer .ProseMirror pre {
+  margin: 0;
+}
+
+.pm-composer .ProseMirror p {
+  min-height: 20px;
+  padding: 2px 0;
+  font-size: 13px;
+  line-height: 20px;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+}
+
+.pm-composer .pm-placeholder:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  color: var(--text-placeholder);
+  pointer-events: none;
+}
+
+.pm-composer .pm-code-block {
+  outline: none;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  word-break: break-word;
+  margin: 7px 0;
+  padding: 12px;
+  overflow: hidden;
+  border: 1px solid #3a3f4b;
+  border-radius: 10px;
+  background: #282c34;
+  color: #f2f4f8;
+  min-height: 38px;
+  font-family: var(--font-family-mono), 'SF Mono', Consolas, monospace;
+  font-size: var(--font-size-code, 12px);
+  line-height: 1.55;
+  tab-size: 2;
+}
+
+.pm-composer .pm-token-keyword {
+  color: #c678dd;
+}
+
+.pm-composer .pm-token-string {
+  color: #98c379;
+}
+
+.pm-composer .pm-token-comment {
+  color: #7f848e;
+}
+
+.pm-composer .pm-token-number {
+  color: #d19a66;
+}
+
+.pm-composer .pm-token-variable {
+  color: #8ab4f8;
+}
+
+.pm-composer .pm-token-function {
+  color: #61afef;
+}
+
+.pm-composer .pm-token-property {
+  color: #e5c07b;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 6px; border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-thumb:hover { background: var(--text-hint); border: 2px solid transparent; background-clip: padding-box; }
+::-webkit-scrollbar-button:single-button { display: block; background-color: transparent; background-size: 10px 6px; background-repeat: no-repeat; background-position: center; height: 12px; }
+::-webkit-scrollbar-button:single-button:vertical:decrement { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpolygon points='0,6 10,6 5,1' fill='%23A0A0A0'/%3E%3C/svg%3E"); }
+::-webkit-scrollbar-button:single-button:vertical:increment { background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpolygon points='0,0 10,0 5,5' fill='%23A0A0A0'/%3E%3C/svg%3E"); }
+::-webkit-scrollbar-button:single-button:vertical:decrement:hover { background-color: var(--bg-sidebar-hover); }
+::-webkit-scrollbar-button:single-button:vertical:increment:hover { background-color: var(--bg-sidebar-hover); }
+
+.drag-region { -webkit-app-region: drag; }
+.no-drag { -webkit-app-region: no-drag; }
